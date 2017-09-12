@@ -2,11 +2,12 @@
 <widget id="site.tesl.pack" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>TESL Pack Simulator</name>
     <description>
-        A blank PhoneGap app.
+        A pack opening simulator for The Elder Scrolls Legends.
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="support@phonegap.com" href="http://TESL.SITE">
+        Mike Anobile
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <preference name="orientation" value="landscape" />
 </widget>

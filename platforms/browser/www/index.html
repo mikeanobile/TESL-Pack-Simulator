@@ -5,26 +5,20 @@
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
         <title>TESL Pack Simulator</title>
 
- 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">	
-  	
+ 	
+<!-- 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+-->
+
+ 
 	<!-- Compressed CSS 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css" integrity="sha256-itWEYdFWzZPBG78bJOOiQIn06QCgN/F0wMDcC4nOhxY=" crossorigin="anonymous" />
 
 -->
+ <link rel="stylesheet" href="css/bootstrap.min.css">	
+  <link rel="stylesheet" href="css/pack.css">
+ <script src="lib/angular/angular.js"></script>
 
-<link rel="stylesheet" href="/pack.css">	
-
-	
-	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/Dynatable/0.3.1/jquery.dynatable.js" type="text/javascript"></script>
-	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-resource.min.js"></script>
-    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
-
-    
 
 <!-- Google Analytics -->
 <script>
@@ -89,7 +83,7 @@
 </div>
 <script>
 
-var app = angular.module('myApp', ['ui.bootstrap', 'ngResource']);
+var app = angular.module('myApp', []);
 
 
 app.controller('customersCtrl', function($scope, $http) {
