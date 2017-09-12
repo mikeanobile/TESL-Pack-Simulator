@@ -6,15 +6,44 @@ var memoryGameApp = angular.module('memoryGameApp', []);
 
 
 memoryGameApp.factory('game', function() {
-  var tileNames = ['8-ball', 'kronos', 'baked-potato', 'dinosaur', 'rocket', 'skinny-unicorn',
-    'that-guy', 'zeppelin'];
+  var tileNames = ['barbas', 'astrid', 'brotherhoodassassin', 'alduin', 'adoringfan', 'wispmother'];
+  //var tileNames = getClients();
 
   return new Game(tileNames);
 });
 
 
-memoryGameApp.controller('GameCtrl', function GameCtrl($scope, game) {
-  $scope.game = game;
+memoryGameApp.controller('GameCtrl', function GameCtrl($scope, $http, game) { 
+  var clients = [];
+  var tileNames = ['barbas', 'astrid', 'brotherhoodassassin', 'alduin', 'adoringfan', 'wispmother'];
+  tileNames = getClients();
+  console.log(tileNames);
+  //$scope.game = new Game(tileNames);
+  
+  function getClients() {
+	var baseURL = "https://api.tesl.site:8443/TESLAPI/ExecuteSQL?query=";
+	var url = baseURL + "SELECT cardid FROM card ORDER BY RAND() LIMIT 6";
+	console.log(url);
+	$http.get(url).then(function (response) {
+		if (angular.isUndefined(response.data.client[0])) {
+			console.log("Error opening pack. Please try again later.");
+			return [];
+		}
+		else {
+			console.log("Pack opened.");
+			clients = response.data.client;
+			$scope.game = new Game(clients);
+			return clients;
+		}
+	});
+}
+
+function reset() {
+	  clients = []
+	  getClients();
+}
+
+  
 });
 
 
@@ -32,7 +61,7 @@ memoryGameApp.directive('mgCard', function() {
     template: '<div class="container">' +
                 '<div class="card" ng-class="{flipped: tile.flipped}">' +
                   '<img class="front" ng-src="img/back.png">' +
-                  '<img class="back" ng-src="img/{{tile.title}}.png">' +
+                  '<img class="back" ng-src="https://www.legends-decks.com/img_cards/{{tile.cardid}}.png">' +
                 '</div>' +
               '</div>',
     scope: {
