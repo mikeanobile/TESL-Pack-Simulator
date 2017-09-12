@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>TESL Pack Simulator</title>
+
+ 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">	
+  	
+	<!-- Compressed CSS 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css" integrity="sha256-itWEYdFWzZPBG78bJOOiQIn06QCgN/F0wMDcC4nOhxY=" crossorigin="anonymous" />
+
+-->
+
+<link rel="stylesheet" href="/pack.css">	
+
+	
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/Dynatable/0.3.1/jquery.dynatable.js" type="text/javascript"></script>
+	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-resource.min.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
+
+    
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-104763096-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+</head>
+<body bgcolor="#CCCCCC">
+<script type="text/javascript" src="cordova.js"></script>
+<div ng-app="myApp" ng-controller="customersCtrl" style="height:100%;display:inline;">
+	<!--  Limit: <input type="text" ng-model="limit" ng-change="searchFunction(search)" /><br /> 
+	<div class="page-header">
+
+		<center><img src ="https://legends.bethesda.net/images/header-image.png" height="80px" />
+	  <font face="Palatino" color="#555555"><h1>PACK SIMULATOR<small></small></h1></font></center>
+	</div>
+
+	<div>
+	-->
+<center>
+
+    <div class="row">
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" ng-repeat="tile in clients" ng-click="flipTile(tile)">
+			<div class="container">
+				<div class="card" ng-class="{flipped: tile.flipped}">
+					<img class="front" ng-src="/img/cardback.png" style="height:90%;" />
+					<img class="back" ng-src="https://www.legends-decks.com/img_cards/{{tile.cardid}}.png" style="height:100%;" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="form-group row">
+	<div class="col-xs-1"></div>
+		<div class="col-xs-2">
+			<button type="button" class="btn btn-default" ng-click="reset()">Open Pack</button>
+		</div>
+		<div class="col-xs-8">
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- TESL -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6474919292299826"
+     data-ad-slot="7466728348"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</div>
+</center>
+</div>	
+</div>
+<script>
+
+var app = angular.module('myApp', ['ui.bootstrap', 'ngResource']);
+
+
+app.controller('customersCtrl', function($scope, $http) {
+
+	var baseURL = "http://tesl.site:8080/TESLAPI/ExecuteSQL?query=";
+
+	$scope.clients = []
+
+	$scope.getClients = function(value) {
+		var url = baseURL + "SELECT cardid FROM card ORDER BY RAND() LIMIT 6";
+		console.log(url);
+		$http.get(url).then(function (response) {
+			if (angular.isUndefined(response.data.client[0])) {
+				console.log("Error opening pack. Please try again later.");
+			}
+			else {
+				$scope.clients = response.data.client;
+				$scope.colHeaders = Object.keys(response.data.client[0]);
+				$scope.totalItems = $scope.clients.length;	
+			}
+		});
+	}
+
+	$scope.reset = function() {
+		  $scope.clients = []
+		  $scope.getClients();
+	}
+	$scope.reset();
+	
+	function Tile(title) {
+  this.title = title;
+  this.flipped = false;
+}
+
+Tile.prototype.flip = function() {
+  this.flipped = !this.flipped;
+}
+
+	
+
+  $scope.flipTile = function(tile) {
+	console.log(tile);
+    if (tile.flipped) {
+		console.log("flipped");
+      return;
+    }
+
+    tile.flipped = !tile.flipped;
+  }
+
+	
+});
+
+
+
+var userid = "null";
+
+</script>
+</body>
+</html>
