@@ -24,6 +24,7 @@ memoryGameApp.controller('GameCtrl', function GameCtrl($scope, $http, game) {
   //$scope.game = new Game(tileNames);
   
   function getClients(expansion) {
+	$scope.currentcard = "cardback";
 	$scope.pitytimer = pitytimer;
 	var baseURL = "https://api.tesl.site:8443/TESLAPI/ExecuteSQL?query=";
 	//var url = baseURL + "SELECT cardid FROM card where expansion = '" + expansion + "' and evolves <> 'True' ORDER BY RAND() LIMIT 6";
@@ -35,7 +36,9 @@ memoryGameApp.controller('GameCtrl', function GameCtrl($scope, $http, game) {
 	$http.get(url).then(function (response) {
 		if (angular.isUndefined(response.data.client[0])) {
 			console.log("Error opening pack. Please try again later.");
-			return [];
+			clients='{"queryRecordCount":6,"client":[{"cardid":"barbas"},{"cardid":"barbas"},{"cardid":"barbas"},{"cardid":"barbas"},{"cardid":"barbas"},{"cardid":"barbas"}],"totalRecordCount":6}';
+			$scope.game = new Game(clients);
+			return clients;
 		}
 		else {
 			console.log("Pack opened.");
@@ -67,8 +70,7 @@ memoryGameApp.controller('GameCtrl', function GameCtrl($scope, $http, game) {
 }
 
 $scope.reset = function(expansion) {
-	  clients = []
-	  $scope.currentcard = "cardback";
+	  clients = [];
 	  getClients(expansion);
 }
 

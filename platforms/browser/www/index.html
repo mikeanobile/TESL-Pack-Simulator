@@ -13,8 +13,8 @@
 
   <table width="100%" height="90%">
   <tr>
-  <td width="20%">
-  <img ng-src="https://tesl.site/img/jpg/{{currentcard}}.jpg" style="width:100%;">
+  <td width="30%">
+  <img ng-src="img/{{currentcard}}.jpg" style="width:100%;">
   </td>
   <td width="60%">
   <table width="100%" height="100%">
@@ -27,7 +27,7 @@
         <div class="container">
           <div class="card" ng-class="{flipped: tile.flipped}" ng-click="current(tile.cardid)">
               <img class="front" ng-src="img/cardback.jpg" style="height:95%;width=95%;position:absolute; top:0px">
-              <img class="back" ng-src="https://tesl.site/img/jpg/{{tile.cardid}}.jpg" style="height:100%;">
+              <img class="back" ng-src="img/{{tile.cardid}}.jpg" style="height:100%;">
           </div>
         </div>
 
@@ -35,10 +35,10 @@
     </tr>
   </table>
   </td>
-  <td width="20%">
+  <td width="10%">
 	  <table width="100%">
-		  <tr><td><div><img class="pack" ng-src="img/core.png" ng-click="reset('core')" style="width:100px;"></div></td></tr>
-		  <tr><td><div><img class="pack" ng-src="img/skyrim.png" ng-click="reset('skyrim')" style="width:100px;"></div></td></tr>
+		  <tr><td><div><img class="pack" ng-src="img/core.png" ng-click="reset('core')" style="width:92px;"></div></td></tr>
+		  <tr><td><div><img class="pack" ng-src="img/skyrim.png" ng-click="reset('skyrim')" style="width:92px;"></div></td></tr>
 	  </table>
   </td>
   </tr>
