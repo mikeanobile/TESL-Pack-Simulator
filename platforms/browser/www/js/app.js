@@ -68,9 +68,13 @@ memoryGameApp.controller('GameCtrl', function GameCtrl($scope, $http, game) {
 
 $scope.reset = function(expansion) {
 	  clients = []
+	  $scope.currentcard = "cardback";
 	  getClients(expansion);
 }
 
+$scope.current = function(currentcard) {
+	  $scope.currentcard = currentcard;
+}
   
 });
 
