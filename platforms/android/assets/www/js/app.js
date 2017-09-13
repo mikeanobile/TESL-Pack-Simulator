@@ -38,7 +38,7 @@ memoryGameApp.controller('GameCtrl', function GameCtrl($scope, $http, game) {
 	});
 }
 
-function reset() {
+$scope.reset = function() {
 	  clients = []
 	  getClients();
 }
@@ -60,8 +60,8 @@ memoryGameApp.directive('mgCard', function() {
     // index.html
     template: '<div class="container">' +
                 '<div class="card" ng-class="{flipped: tile.flipped}">' +
-                  '<img class="front" ng-src="img/back.png">' +
-                  '<img class="back" ng-src="https://www.legends-decks.com/img_cards/{{tile.cardid}}.png">' +
+                  '<img class="front" ng-src="img/back.png" style="height:95%;">' +
+                  '<img class="back" ng-src="https://www.legends-decks.com/img_cards/{{tile.cardid}}.png" style="height:100%;">' +
                 '</div>' +
               '</div>',
     scope: {
