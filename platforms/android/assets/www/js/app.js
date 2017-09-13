@@ -14,15 +14,23 @@ memoryGameApp.factory('game', function() {
 
 
 memoryGameApp.controller('GameCtrl', function GameCtrl($scope, $http, game) { 
+  var pitytimer = 20;
+  
   var clients = [];
   var tileNames = ['barbas', 'astrid', 'brotherhoodassassin', 'alduin', 'adoringfan', 'wispmother'];
-  tileNames = getClients();
+  var expansion = "core";
+  tileNames = getClients(expansion);
   console.log(tileNames);
   //$scope.game = new Game(tileNames);
   
-  function getClients() {
+  function getClients(expansion) {
+	$scope.pitytimer = pitytimer;
 	var baseURL = "https://api.tesl.site:8443/TESLAPI/ExecuteSQL?query=";
-	var url = baseURL + "SELECT cardid FROM card ORDER BY RAND() LIMIT 6";
+	//var url = baseURL + "SELECT cardid FROM card where expansion = '" + expansion + "' and evolves <> 'True' ORDER BY RAND() LIMIT 6";
+	var url = baseURL + "SELECT common, rare, epic, legendary FROM pack where expansion = '" + expansion + "' ORDER BY RAND() LIMIT 1";
+	if (pitytimer < 1) { 
+	var url = baseURL + "SELECT common, rare, epic, legendary FROM pack where expansion = '" + expansion + "' AND legendary = 1 ORDER BY RAND() LIMIT 1";
+	} 
 	console.log(url);
 	$http.get(url).then(function (response) {
 		if (angular.isUndefined(response.data.client[0])) {
@@ -32,15 +40,35 @@ memoryGameApp.controller('GameCtrl', function GameCtrl($scope, $http, game) {
 		else {
 			console.log("Pack opened.");
 			clients = response.data.client;
-			$scope.game = new Game(clients);
-			return clients;
+			//next we need to actually open the pack
+			var query = "SELECT x.* FROM ((SELECT cardid FROM card where expansion = '" + expansion + "' and rarity = 'common' and evolves <> 'True' ORDER BY RAND() LIMIT " + clients[0].common +
+			") UNION (SELECT cardid FROM card where expansion = '" + expansion + "' and rarity = 'rare' and evolves <> 'True' ORDER BY RAND() LIMIT " + clients[0].rare +
+			") UNION (SELECT cardid FROM card where expansion = '" + expansion + "' and rarity = 'epic' and evolves <> 'True' ORDER BY RAND() LIMIT " + clients[0].epic +
+			") UNION (SELECT cardid FROM card where expansion = '" + expansion + "' and rarity = 'legendary' and evolves <> 'True' ORDER BY RAND() LIMIT " + clients[0].legendary +
+			") LIMIT 6) x ORDER BY RAND()";
+			url = baseURL + query;
+			console.log(url);
+			$http.get(url).then(function (response) {
+				if (angular.isUndefined(response.data.client[0])) {
+					console.log("Error opening pack. Please try again later.");
+					return [];
+				}
+				else {
+					console.log("Pack opened.");
+					pitytimer--;
+					if (clients[0].legendary > 0) {pitytimer = 20;}
+					clients = response.data.client;
+					$scope.game = new Game(clients);
+					return clients;
+				}
+			});
 		}
 	});
 }
 
-$scope.reset = function() {
+$scope.reset = function(expansion) {
 	  clients = []
-	  getClients();
+	  getClients(expansion);
 }
 
   

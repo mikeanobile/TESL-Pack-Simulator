@@ -4,15 +4,19 @@ body  {
 	background-color: #000000;
 }
 div {
-  font-size: 30px;
+  font-size: 12px;
 }
 
 .container {
 
   position: relative;
   display: block;
-  width: 120px;
-  height: 200px;
+  min-width: 80px;
+  max-width: 120px;
+  min-height: 140px;
+  max-height: 200px;
+  width: 100px;
+  height: 165px;
 
 }
 
