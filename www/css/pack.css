@@ -11,13 +11,9 @@ div {
 
   position: relative;
   display: block;
-  width: 150px;
-  height: 250px;
-  -webkit-perspective: 800px;
-  -moz-perspective: 800px;
-  -ms-perspective: 800px;
-  -o-perspective: 800px;
-  perspective: 800px;
+  width: 120px;
+  height: 200px;
+
 }
 
 .card {

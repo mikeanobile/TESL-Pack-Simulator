@@ -20,7 +20,7 @@
         -->
         <div class="container">
           <div class="card" ng-class="{flipped: tile.flipped}">
-              <img class="front" ng-src="img/cardback.png" style="height:95%;width=95%;position:absolute; top:0px">
+              <img class="front" ng-src="img/cardback.jpg" style="height:95%;width=95%;position:absolute; top:0px">
               <img class="back" ng-src="https://tesl.site/img/jpg/{{tile.cardid}}.jpg" style="height:100%;">
           </div>
         </div>
@@ -34,15 +34,19 @@
 			<button type="button" class="btn btn-default" ng-click="reset()">Open Pack</button>
 		</div>
 		<div class="col-xs-8">
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- TESL -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-6474919292299826"
-     data-ad-slot="7466728348"
-     data-ad-format="auto"></ins>
+ 
 <script>
-(adsbygoogle = window.adsbygoogle || []).push({});
+function onDeviceReady() {
+    document.removeEventListener('deviceready', onDeviceReady, false);
+
+    // Set AdMobAds options:
+    admob.setOptions({
+        publisherId:          "ca-app-pub-6474919292299826/4005825010"  // Required
+    });
+}
+
+document.addEventListener("deviceready", onDeviceReady, false);
+admob.createBannerView();
 </script>
 </div>
 </div>
