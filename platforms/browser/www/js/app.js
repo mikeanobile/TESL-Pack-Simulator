@@ -54,7 +54,9 @@ memoryGameApp.controller('GameCtrl', function GameCtrl($scope, $http, game) {
 			$http.get(url).then(function (response) {
 				if (angular.isUndefined(response.data.client[0])) {
 					console.log("Error opening pack. Please try again later.");
-					return [];
+					clients='{"queryRecordCount":6,"client":[{"cardid":"barbas"},{"cardid":"barbas"},{"cardid":"barbas"},{"cardid":"barbas"},{"cardid":"barbas"},{"cardid":"barbas"}],"totalRecordCount":6}';
+					$scope.game = new Game(clients);
+					return clients;
 				}
 				else {
 					console.log("Pack opened.");
