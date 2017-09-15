@@ -29,6 +29,7 @@
     <preference name="fullscreen" value="true" />
     <engine name="android" spec="~6.2.3" />
     <plugin name="cordova-plugin-admobpro" spec="~2.29.22" />
+	<!--
     <plugin name="phonegap-facebook-plugin" spec="https://github.com/phonegap/phonegap-facebook-plugin.git">
         <variable name="APP_ID" value="1690618514579059" />
         <variable name="APP_NAME" value="TESL" />
@@ -36,4 +37,5 @@
 	<feature name="org.apache.cordova.facebook.Connect">
     <param name="android-package" value="org.apache.cordova.facebook.ConnectPlugin" />
 	</feature>
+	-->
 </widget>
