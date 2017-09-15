@@ -10,7 +10,7 @@
     <content src="index.html" />
     <icon src="icon.png" />
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
-    <gap:plugin name="phonegap-admob" source="npm" />
+    <!-- <gap:plugin name="phonegap-admob" source="npm" /> -->
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
