@@ -1,0 +1,29 @@
+{
+    "cordova-plugin-admobpro": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-admobpro"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-extension": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-extension"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "phonegap-facebook-plugin": {
+        "source": {
+            "type": "registry",
+            "id": "https://github.com/phonegap/phonegap-facebook-plugin.git"
+        },
+        "is_top_level": true,
+        "variables": {
+            "APP_ID": "1690618514579059",
+            "APP_NAME": "TESL"
+        }
+    }
+}

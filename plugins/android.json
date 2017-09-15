@@ -6,6 +6,19 @@
     "config_munge": {
         "files": {}
     },
-    "installed_plugins": {},
-    "dependent_plugins": {}
+    "installed_plugins": {
+        "cordova-plugin-admobpro": {
+            "PACKAGE_NAME": "site.tesl.pack"
+        },
+        "phonegap-facebook-plugin": {
+            "APP_ID": "1690618514579059",
+            "APP_NAME": "TESL",
+            "PACKAGE_NAME": "site.tesl.pack"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-extension": {
+            "PACKAGE_NAME": "site.tesl.pack"
+        }
+    }
 }

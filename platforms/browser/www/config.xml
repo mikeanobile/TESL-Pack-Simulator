@@ -1,5 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="site.tesl.pack" version="1.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="site.tesl.pack" version="1.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+    <feature name="FacebookConnectPlugin">
+        <param name="browser-package" value="FacebookConnectPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <plugin name="FacebookConnectPlugin" value="FacebookConnectPlugin" />
+    <access origin="https://m.facebook.com" />
+    <access origin="https://graph.facebook.com" />
+    <access origin="https://api.facebook.com" />
+    <access origin="https://*.fbcdn.net" />
+    <access origin="https://*.akamaihd.net" />
     <name>TESL Pack Simulator</name>
     <description>
         Pack opening simulator for The Elder Scrolls Legends.
@@ -19,4 +29,5 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <preference name="orientation" value="landscape" />
+    <preference name="fullscreen" value="true" />
 </widget>

@@ -2,8 +2,15 @@
 /* App Controllers */
 
 
-var memoryGameApp = angular.module('memoryGameApp', []);
+var memoryGameApp = angular.module('memoryGameApp', ['ngCordova'])
+/*
+.config(function($cordovaFacebookProvider) {
+  var appID = 1690618514579059;
+  var version = "v2.0"; // or leave blank and default is v2.0
+  $cordovaFacebookProvider.browserInit(appID, version);
+});
 
+*/
 
 memoryGameApp.factory('game', function() {
   var tileNames = ['barbas', 'astrid', 'brotherhoodassassin', 'alduin', 'adoringfan', 'wispmother'];
@@ -13,9 +20,20 @@ memoryGameApp.factory('game', function() {
 });
 
 
-memoryGameApp.controller('GameCtrl', function GameCtrl($scope, $http, game) { 
-  var pitytimer = 20;
+memoryGameApp.controller('GameCtrl', function GameCtrl($scope, $http, $cordovaFacebook, game) { 
+/*
+  $cordovaFacebook.login(["public_profile", "email", "user_friends"])
+    .then(function(success) {
+      // { id: "634565435",
+      //   lastName: "bob"
+      //   ...
+      // }
+    }, function (error) {
+      // error
+    });*/
   
+  var pitytimer = 20;
+ 
   var clients = [];
   var tileNames = ['barbas', 'astrid', 'brotherhoodassassin', 'alduin', 'adoringfan', 'wispmother'];
   var expansion = "core";
